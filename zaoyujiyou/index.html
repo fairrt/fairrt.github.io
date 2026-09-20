@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遭遇绩优股-个人成长与职场策略指南</title>
+    <meta name="description" content="遭遇绩优股是指职场或人生中遇到极具潜力的优质人才、项目或机遇。本指南为您提供识别、吸引及管理绩优股的实用策略，包括沟通技巧、团队建设与自我提升，助您在竞争中脱颖而出。">
+    <meta name="keywords" content="遭遇绩优股,职场策略,人才管理,个人成长,向上管理,团队建设">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --border-radius: 12px;
+            --container-width: 1200px;
+            --spacing-sm: 16px;
+            --spacing-md: 32px;
+            --spacing-lg: 64px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tag {
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Introduction */
+        .intro {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .intro-content h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .intro-content p {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .intro-visual {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .visual-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .visual-list li::before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Strategy Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        .strategies {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--bg-card);
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .strategy-card {
+            border: 1px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .strategy-card h3 {
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.25rem;
+        }
+
+        .strategy-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            margin-bottom: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: var(--spacing-md);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-card);
+        }
+
+        .faq-question:hover {
+            background-color: #f9fafb;
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .icon-plus {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .icon-plus {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: #d1d5db;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none; /* 简化处理，移动端隐藏导航 */
+            }
+
+            .header-inner {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>遭遇绩优股</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#concept">核心概念</a></li>
+                    <li><a href="#strategies">应对策略</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-btn">获取完整指南</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-tags">
+                    <span class="tag">职场生存</span>
+                    <span class="tag">团队管理</span>
+                    <span class="tag">个人成长</span>
+                </div>
+                <h1>如何识别并驾驭“遭遇绩优股”的机遇？</h1>
+                <p>在职场竞争日益激烈的今天，遇到一位能力超群、潜力巨大的合作伙伴（即“绩优股”），是个人职业生涯的重要转折点。掌握正确的应对与利用策略，能将这一机遇转化为巨大的职业红利。</p>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="concept" class="intro container">
+            <div class="intro-grid">
+                <div class="intro-content">
+                    <h2>什么是“遭遇绩优股”？</h2>
+                    <p>在职场语境下，“遭遇绩优股”通常指个人在团队中、项目中或业务合作中，突然遇到了一位表现优异、成长迅速或具备核心竞争力的对象。这可能是一位能力突出的同事、一个极具潜力的项目，或是一个能够带来巨大商业价值的合作方。</p>
+                    <p>这并非单纯的运气，而是一种需要敏锐洞察力和正确处理方式的职场现象。如何正确识别这种信号，如何与之建立良性的互动关系，以及如何将其转化为自身成长的动力，是本指南的核心内容。</p>
+                </div>
+                <div class="intro-visual">
+                    <ul class="visual-list">
+                        <li>识别高潜人才的关键特质</li>
+                        <li>评估合作价值与风险</li>
+                        <li>建立信任与沟通机制</li>
+                        <li>实现共赢与资源置换</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategies Section -->
+        <section id="strategies" class="strategies">
+            <div class="container">
+                <div class="section-title">
+                    <h2>应对“遭遇绩优股”的实用策略</h2>
+                    <p>面对优质资源或人才，切忌盲目嫉妒或生硬压制。以下策略助您化被动为主动。</p>
+                </div>
+                
+                <div class="strategy-grid">
+                    <!-- Strategy 1 -->
+                    <article class="strategy-card">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>保持开放心态</h3>
+                        <p>首先调整自身心态，将对方的优秀视为团队进步的动力而非威胁。开放的心态能为您吸引更多优质资源的关注。</p>
+                    </article>
+
+                    <!-- Strategy 2 -->
+                    <article class="strategy-card">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3>建立有效沟通</h3>
+                        <p>与“绩优股”保持高频、透明的沟通。了解其工作痛点与职业诉求，通过协作解决实际问题，建立深厚的信任基础。</p>
+                    </article>
+
+                    <!-- Strategy 3 -->
+                    <article class="strategy-card">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <h3>提供展示舞台</h3>
+                        <p>对于优秀的下属或合作伙伴，提供具有挑战性的项目和必要的资源支持。让他们有足够的空间施展才华，同时您也能从中受益。</p>
+                    </article>
+
+                    <!-- Strategy 4 -->
+                    <article class="strategy-card">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <h3>注重资源互补</h3>
+                        <p>分析双方的优势与短板。通过资源置换和优势互补，形成“1+1>2”的效应，共同推动项目或业务的发展。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq container">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+                <p>关于“遭遇绩优股”的常见误区与解决方案。</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        遇到绩优股同事感到嫉妒怎么办？
+                        <span class="icon-plus">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        首先要认识到，同事的优秀并不代表您的失败。这种情绪是正常的，但需要通过自我调节来克服。尝试将焦点从“比较”转移到“学习”上，观察对方是如何解决问题的，并将其方法应用到自己的工作中。将嫉妒转化为追赶的动力。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        如何判断对方是否真的是“绩优股”？
+                        <span class="icon-plus">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        评估绩优股不应仅看表面的业绩数字，而应关注其解决问题的能力、学习速度、抗压能力以及团队协作精神。一个真正的绩优股不仅能完成KPI，还能在关键时刻为团队带来突破性的思路和成果。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        如果绩优股跳槽了，之前的投入是否浪费？
+                        <span class="icon-plus">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        即使对方离开，之前的投入也不会完全浪费。这段合作经历提升了您的管理经验和识人能力，也丰富了您的人脉网络。更重要的是，您在这个过程中获得的成长是无法被带走的宝贵财富。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于遭遇绩优股</h4>
+                    <p style="font-size: 0.9rem; color: #9ca3af;">致力于为职场人士提供关于人才管理、团队协作与个人成长的深度指南。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">核心概念</a></li>
+                        <li><a href="#">应对策略</a></li>
+                        <li><a href="#">成功案例</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">订阅周刊</a></li>
+                        <li><a href="#">商务合作</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 遭遇绩优股指南. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ折叠逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他已打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
