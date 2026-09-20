@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>破费特 - 智能消费追踪与预算管理专家</title>
+    <meta name="description" content="破费特为您提供专业的一站式消费追踪与预算管理解决方案，帮助用户清晰了解每一笔支出，通过可视化报表优化理财计划，实现财务自由。">
+    <meta name="keywords" content="破费特, 消费追踪, 预算管理, 个人理财, 财务报表, 支出分析">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2E7D32; /* Forest Green */
+            --primary-light: #E8F5E9;
+            --accent-color: #FF6F00; /* Amber */
+            --text-main: #1F2937;
+            --text-secondary: #6B7280;
+            --bg-body: #F9FAFB;
+            --bg-card: #FFFFFF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #1B5E20;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #FFFFFF 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Features Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* How It Works */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+            display: none; /* Hidden on mobile */
+        }
+
+        @media (min-width: 768px) {
+            .steps-container::before {
+                display: block;
+            }
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            min-width: 200px;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background-color: var(--bg-card);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 auto 24px;
+        }
+
+        .step-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Dashboard Preview */
+        .dashboard-preview {
+            background-color: var(--text-main);
+            border-radius: var(--radius);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-preview h2 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .mockup-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #374151;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #4B5563;
+        }
+
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #4B5563;
+            padding-bottom: 10px;
+        }
+
+        .mockup-tabs span {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #4B5563;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .mockup-tabs span.active {
+            background-color: var(--primary-color);
+        }
+
+        .mockup-body {
+            display: flex;
+            gap: 20px;
+        }
+
+        .mockup-sidebar {
+            width: 150px;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .mockup-sidebar {
+                display: block;
+            }
+        }
+
+        .mockup-content {
+            flex: 1;
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(180deg, rgba(46, 125, 50, 0.2) 0%, rgba(46, 125, 50, 0) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #6B7280;
+        }
+
+        .bar {
+            width: 12%;
+            background-color: var(--primary-color);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        .mockup-list {
+            margin-top: 20px;
+        }
+
+        .mockup-list-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #4B5563;
+            font-size: 0.9rem;
+        }
+
+        .mockup-list-item span:last-child {
+            color: #FCD34D;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            border-radius: var(--radius);
+            margin: 40px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .cta-section .btn {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .cta-section .btn:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid #E5E7EB;
+            padding: 60px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 16px;
+            max-width: 300px;
+        }
+
+        .footer-col h5 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none; /* Simplified for this static demo */
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>破费特</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#features">核心功能</a>
+                <a href="#how-it-works">使用流程</a>
+                <a href="#faq">常见问题</a>
+                <a href="#pricing">价格方案</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" style="color: var(--text-main); font-weight: 500;">登录</a>
+                <a href="#" class="btn btn-primary">免费试用</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>掌控每一分支出<br><span class="highlight">让财富更有规划</span></h1>
+                <p>破费特是一款专为现代个人和家庭设计的智能消费追踪工具。告别糊涂账，通过直观的图表与智能分析，快速发现隐形消费，制定科学的预算计划。</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn btn-primary">立即开始记账</a>
+                    <a href="#" class="btn btn-outline">观看演示视频</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>500万+</h3>
+                        <p>活跃用户</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10亿+</h3>
+                        <p>记账笔数</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>用户好评率</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>为什么选择破费特？</h2>
+                    <p>不仅仅是记录数字，更是您财务健康的智能管家</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <h3>智能记账</h3>
+                        <p>支持语音输入、拍照识别发票和自动分类。只需几秒钟即可完成一笔消费记录，告别繁琐操作。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                        </div>
+                        <h3>可视化报表</h3>
+                        <p>自动生成月度、季度及年度收支报表。通过饼图、柱状图清晰展示消费结构，直观了解资金去向。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                        </div>
+                        <h3>预算管理</h3>
+                        <p>为不同类别设置月度预算上限，超支预警提醒。帮助您控制冲动消费，实现储蓄目标。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <h3>数据安全</h3>
+                        <p>采用银行级加密技术保护您的隐私数据。支持本地备份与云端同步，数据永不丢失。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>多人家庭账本</h3>
+                        <p>支持创建家庭群组，共享账本。夫妻共同管理家庭财务，清晰划分各自支出，减少家庭矛盾。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <h3>多端同步</h3>
+                        <p>支持iOS、Android、Web端实时同步。无论您使用手机还是电脑，随时查看财务状况。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="section" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>三步轻松开启理财</h2>
+                    <p>无需复杂设置，即刻开始您的财富管理之旅</p>
+                </div>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>绑定账户</h4>
+                        <p>简单注册并授权，破费特将安全读取您的银行/信用卡账单数据。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>自动分类</h4>
+                        <p>系统自动识别交易类型，您只需确认即可生成月度收支报表。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>优化决策</h4>
+                        <p>查看超支提醒，调整下月预算，逐步改善财务健康状况。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview -->
+        <section class="section">
+            <div class="container">
+                <div class="dashboard-preview">
+                    <h2>直观的数据分析看板</h2>
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div style="font-weight: bold; font-size: 1.1rem;">2023年10月收支概览</div>
+                            <div class="mockup-tabs">
+                                <span>报表</span>
+                                <span class="active">分析</span>
+                                <span>预算</span>
+                            </div>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-sidebar">
+                                <div style="font-size: 0.8rem; color: #9CA3AF; margin-bottom: 10px;">快捷菜单</div>
+                                <div style="color: #D1D5DB; font-size: 0.85rem; margin-bottom: 8px;">总支出</div>
+                                <div style="color: #D1D5DB; font-size: 0.85rem; margin-bottom: 8px;">收入</div>
+                                <div style="color: #D1D5DB; font-size: 0.85rem; margin-bottom: 8px;">结余</div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="chart-placeholder">
+                                    <div class="bar" style="height: 40%;" data-label="餐饮"></div>
+                                    <div class="bar" style="height: 25%;" data-label="交通"></div>
+                                    <div class="bar" style="height: 60%;" data-label="购物"></div>
+                                    <div class="bar" style="height: 30%;" data-label="娱乐"></div>
+                                    <div class="bar" style="height: 15%;" data-label="居住"></div>
+                                </div>
+                                <div class="mockup-list">
+                                    <div class="mockup-list-item">
+                                        <span>餐饮美食 (占比最高)</span>
+                                        <span>¥ 2,450.00</span>
+                                    </div>
+                                    <div class="mockup-list-item">
+                                        <span>日常购物</span>
+                                        <span>¥ 1,890.00</span>
+                                    </div>
+                                    <div class="mockup-list-item">
+                                        <span>交通出行</span>
+                                        <span>¥ 650.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常见问题解答</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>破费特的数据安全吗？</h4>
+                        <p>我们非常重视用户隐私。所有数据传输均采用SSL加密，本地存储也经过AES加密处理。您的财务数据不会用于任何商业目的，仅用于为您提供记账服务。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>需要付费才能使用所有功能吗？</h4>
+                        <p>破费特提供免费基础版，满足日常记账需求。高级报表导出、多账本管理等功能在专业版中提供，您可以随时升级。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>如何导入历史账单？</h4>
+                        <p>支持通过Excel表格批量导入历史数据，也支持从其他记账软件通过CSV格式迁移数据，帮助您无缝衔接。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>支持哪些银行和信用卡？</h4>
+                        <p>目前我们支持国内主流银行及部分国际信用卡的账单自动同步。具体支持列表会定期更新，您可以在设置中查看。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container">
+            <div class="cta-section">
+                <h2>开启您的理性消费之旅</h2>
+                <p>加入超过500万用户的行列，让破费特成为您理财路上的得力助手。</p>
+                <a href="#" class="btn">免费下载 App</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        <span>破费特</span>
+                    </a>
+                    <p>专注于个人财务管理的智能工具，致力于帮助用户建立健康的消费习惯，实现财务自由。</p>
+                </div>
+                <div class="footer-col">
+                    <h5>产品</h5>
+                    <ul>
+                        <li><a href="#">功能介绍</a></li>
+                        <li><a href="#">价格方案</a></li>
+                        <li><a href="#">下载应用</a></li>
+                        <li><a href="#">更新日志</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>支持</h5>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>关于</h5>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                        <li><a href="#">媒体报道</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 破费特科技保留所有权利. 本网站为演示页面。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
