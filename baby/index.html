@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>babylon中文版-3D游戏引擎开发与资源下载指南</title>
+    <meta name="description" content="babylon中文版专业资源站，提供Babylon.js 3D游戏引擎的详细下载、安装教程、核心功能解析、最佳实践案例及社区交流指南。">
+    <meta name="keywords" content="babylon中文版, Babylon.js, 3D游戏引擎, Web3D开发, JavaScript 3D, Babylon引擎教程">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --container-width: 1200px;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            padding-top: var(--header-height);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background-color: #357abd;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-white:hover, .btn-outline:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Download Section */
+        .download-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .download-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .download-text {
+            flex: 1;
+        }
+
+        .download-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .download-text p {
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .download-box {
+            flex: 1;
+            background: #f1f4f8;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .file-info {
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        /* Code Example */
+        .code-section {
+            padding: 60px 0;
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+        }
+
+        .code-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .code-keyword { color: #c586c0; }
+        .code-func { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; }
+
+        /* FAQ */
+        .faq-section {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--secondary-color);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        details[open] summary::after {
+            content: "-";
+        }
+
+        details p {
+            margin-top: 15px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .header-inner { flex-direction: column; gap: 15px; height: auto; padding: 10px 0; }
+            nav ul { gap: 15px; font-size: 0.9rem; }
+            .download-content { flex-direction: column; }
+            .section-title h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span>Babylon</span>JS
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#features">核心特性</a></li>
+                    <li><a href="#download">下载安装</a></li>
+                    <li><a href="#docs">开发文档</a></li>
+                    <li><a href="#community">社区资源</a></li>
+                </ul>
+            </nav>
+            <a href="#download" class="cta-button">获取 babylon中文版</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Web 3D 开发的未来<br>从这里开始</h1>
+                <p>使用 Babylon.js 构建高性能、跨浏览器的 3D 网页应用。无需复杂的后端，直接在浏览器中呈现震撼的 3D 体验。</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-white">下载 babylon中文版</a>
+                    <a href="#docs" class="btn btn-outline">阅读官方文档</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>为什么选择 Babylon.js</h2>
+                    <p>一个功能强大的 Web 3D 引擎，专为专业开发者和创意爱好者设计。</p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <div class="card-icon">🎮</div>
+                        <h3>游戏开发</h3>
+                        <p>支持完整的游戏循环、物理引擎集成（Cannon.js）、碰撞检测和丰富的 UI 系统，轻松构建网页游戏。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🎨</div>
+                        <h3>视觉特效</h3>
+                        <p>内置 PBR 材质、后处理效果、粒子系统和动画系统，实现电影级的渲染质量和流畅的视觉体验。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🌐</div>
+                        <h3>跨平台兼容</h3>
+                        <p>完美支持桌面端和移动端，利用 WebGL 2.0 和 WebGPU 技术，确保在各种设备上都能获得最佳性能。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section">
+            <div class="container">
+                <div class="download-content">
+                    <div class="download-text">
+                        <h2>获取 babylon中文版资源</h2>
+                        <p>Babylon.js 是一个开源引擎，您可以从官方仓库或本地包管理器中轻松获取。以下是安装指南：</p>
+                        <ul class="feature-list">
+                            <li>通过 npm 或 yarn 进行模块化安装</li>
+                            <li>支持 CDN 引入，快速开始项目</li>
+                            <li>提供完整的中文开发文档与 API 参考</li>
+                            <li>兼容主流构建工具（Webpack, Vite 等）</li>
+                        </ul>
+                    </div>
+                    <div class="download-box">
+                        <span class="version-badge">v6.0+ (Latest)</span>
+                        <h3>安装命令示例</h3>
+                        <p style="margin-bottom: 15px; color: var(--text-light);">使用 Node.js 包管理器安装：</p>
+                        <div class="file-info">
+                            <code>npm install babylonjs</code><br>
+                            <code>npm install @babylonjs/loaders</code>
+                        </div>
+                        <a href="#" class="cta-button" style="width: 100%; display: block; text-align: center;">访问 NPM 官方页面</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Snippet -->
+        <section id="docs" class="code-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>快速上手示例</h2>
+                    <p>只需几行代码，即可在 Canvas 上渲染一个旋转的立方体。</p>
+                </div>
+                <div class="code-block">
+<pre><code><span class="code-keyword">import</span> { Engine, Scene, ArcRotateCamera, MeshBuilder, Color3 } <span class="code-keyword">from</span> <span class="code-string">'@babylonjs/core'</span>;
+
+<span class="code-comment">// 初始化引擎</span>
+<span class="code-keyword">const</span> engine = <span class="code-keyword">new</span> Engine(<span class="code-keyword">document</span>.getElementById(<span class="code-string">'renderCanvas'</span>), <span class="code-keyword">true</span>);
+
+<span class="code-keyword">const</span> createScene = <span class="code-keyword">function</span>() {
+    <span class="code-keyword">const</span> scene = <span class="code-keyword">new</span> Scene(engine);
+
+    <span class="code-comment">// 摄像机</span>
+    <span class="code-keyword">const</span> camera = <span class="code-keyword">new</span> ArcRotateCamera(<span class="code-string">'Camera'</span>, <span class="code-keyword">Math.PI</span> / <span class="code-keyword">2</span>, <span class="code-keyword">Math.PI</span> / <span class="code-keyword">2</span>, <span class="code-string">3</span>, Vector3.Zero(), scene);
+    camera.attachControl(<span class="code-keyword">document</span>.getElementById(<span class="code-string">'renderCanvas'</span>), <span class="code-keyword">true</span>);
+
+    <span class="code-comment">// 灯光</span>
+    <span class="code-keyword">new</span> HemisphericLight(<span class="code-string">'light'</span>, Vector3.Zero(), scene);
+
+    <span class="code-comment">// 立方体</span>
+    <span class="code-keyword">const</span> box = MeshBuilder.CreateBox(<span class="code-string">'box'</span>, {<span class="code-string">size</span>: <span class="code-string">1</span>}, scene);
+    box.material = <span class="code-keyword">new</span> StandardMaterial(<span class="code-string">'boxMat'</span>, scene);
+    box.material.diffuseColor = Color3.Red();
+
+    <span class="code-keyword">return</span> scene;
+};
+
+<span class="code-keyword">const</span> scene = createScene();
+
+scene.executeWhenReady(<span class="code-keyword">function</span> () {
+    engine.runRenderLoop(<span class="code-keyword">function</span> () {
+        scene.render();
+    });
+});</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+            </div>
+            <details>
+                <summary>babylon中文版和 Unity WebGL 有什么区别？</summary>
+                <p>Babylon.js 是基于 JavaScript 的纯前端引擎，无需安装客户端即可运行，非常适合轻量级 3D 网页应用。而 Unity WebGL 通常用于将大型游戏移植到网页，文件体积较大，性能优化较为复杂。</p>
+            </details>
+            <details>
+                <summary>如何开始学习 Babylon.js？</summary>
+                <p>建议从官方文档的“Getting Started”章节入手，运行官方提供的示例代码。掌握基本概念（如场景、摄像机、网格）后，可以参考官方画廊中的高级教程。</p>
+            </details>
+            <details>
+                <summary>支持 WebGPU 吗？</summary>
+                <p>是的，Babylon.js 正在积极支持 WebGPU，并在最新的 babylon中文版版本中提供了相应的 API 和着色器语言支持，以提供更极致的性能。</p>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于 Babylon.js</h4>
+                    <p>Babylon.js 是一个强大的开源 Web 3D 引擎，由微软开发团队支持，致力于为开发者提供最佳的 3D 互联网体验。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>资源链接</h4>
+                    <ul>
+                        <li><a href="#">官方文档</a></li>
+                        <li><a href="#">GitHub 仓库</a></li>
+                        <li><a href="#">在线演示</a></li>
+                        <li><a href="#">论坛社区</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">报告 Bug</a></li>
+                        <li><a href="#">贡献代码</a></li>
+                        <li><a href="#">赞助项目</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Babylon.js 中文资源站. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
