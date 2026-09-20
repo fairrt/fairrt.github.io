@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="就此别过 - 深度情感图文故事分享平台，收录关于离别、成长、遗憾与释怀的治愈系内容，提供故事阅读、情感互动与心理疏导指南。">
+    <meta name="keywords" content="就此别过,情感故事,离别,治愈系,图文故事,人生感悟">
+    <title>就此别过 - 深度情感图文故事与人生感悟分享平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #f7f8fa;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --accent-color: #6c5ce7;
+            --accent-hover: #5649c0;
+            --border-color: #e1e4e8;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 5rem 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--text-main), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(108, 92, 231, 0.1);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Story Grid */
+        .stories-section {
+            padding: 4rem 0;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .story-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .story-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+
+        .read-more {
+            color: var(--accent-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Features / Guide */
+        .guide-section {
+            background-color: white;
+            padding: 4rem 0;
+        }
+
+        .guide-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .guide-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .guide-item {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(108, 92, 231, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .guide-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-text p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(to right, #6c5ce7, #a29bfe);
+            color: white;
+        }
+
+        .quote-box {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            padding: 1.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-color);
+        }
+
+        .faq-answer {
+            padding-bottom: 1.5rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-item:not(.active) .faq-question::after {
+            content: '+';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .guide-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">就此别过</a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">情感故事</a>
+                <a href="#">人生感悟</a>
+                <a href="#">心理疏导</a>
+                <a href="#">关于我们</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">投稿故事</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="badge">情感治愈社区</span>
+                    <h1>在每一个离别中，<br>学会更好地相遇</h1>
+                    <p>收录关于遗憾、释怀与成长的真实故事。无论你是正在经历离别，还是试图走出过去，这里都有属于你的温暖与力量。</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start;">
+                        <button class="btn btn-primary">开始阅读</button>
+                        <button class="btn btn-outline">查看投稿指南</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/emotion_hero/600/400.jpg" alt="在窗边看雨的背影，象征离别与思考" width="600" height="400">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Stories -->
+        <section class="stories-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>精选故事</h2>
+                    <p>那些关于“就此别过”的真实记录</p>
+                </div>
+                <div class="stories-grid">
+                    <!-- Story 1 -->
+                    <article class="story-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/leaving1/400/300.jpg" alt="火车站场景">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">职场/成长</span>
+                            <h3 class="card-title">三年之痒：我们都在假装不在意</h3>
+                            <p class="card-excerpt">在那次离职聚餐后，我们没有拥抱，只是说了句“保重”。这就是成年人结束一段关系的体面方式。</p>
+                            <div class="card-meta">
+                                <span>2023-10-15</span>
+                                <a href="#" class="read-more">阅读全文 →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Story 2 -->
+                    <article class="story-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/leaving2/400/300.jpg" alt="公园长椅">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">情感/友情</span>
+                            <h3 class="card-title">删掉好友的那一晚，我失眠了</h3>
+                            <p class="card-excerpt">删除对话框只需要一秒，但清理掉回忆需要很久。原来有些人的出现，只是为了教会我们如何告别。</p>
+                            <div class="card-meta">
+                                <span>2023-10-12</span>
+                                <a href="#" class="read-more">阅读全文 →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Story 3 -->
+                    <article class="story-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/leaving3/400/300.jpg" alt="空荡的房间">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">生活/感悟</span>
+                            <h3 class="card-title">独居的第三年：学会与孤独和解</h3>
+                            <p class="card-excerpt">不再期待有人敲门，不再因为错过末班车而惊慌。我们就此别过，与孤独握手言和。</p>
+                            <div class="card-meta">
+                                <span>2023-10-10</span>
+                                <a href="#" class="read-more">阅读全文 →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Story 4 -->
+                    <article class="story-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/leaving4/400/300.jpg" alt="海边夕阳">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">爱情/分手</span>
+                            <h3 class="card-title">没有争吵的分手，最让人意难平</h3>
+                            <p class="card-excerpt">不是不爱了，只是累了。我们就这样平静地结束了，就像两列并行的火车，到了站就分道扬镳。</p>
+                            <div class="card-meta">
+                                <span>2023-10-08</span>
+                                <a href="#" class="read-more">阅读全文 →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Story 5 -->
+                    <article class="story-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/leaving5/400/300.jpg" alt="老照片">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">回忆/亲情</span>
+                            <h3 class="card-title">老家拆迁后，我彻底失去了故乡</h3>
+                            <p class="card-excerpt">故乡不是地图上的一个点，而是回不去的记忆。我们终究要离开，把根留在这里。</p>
+                            <div class="card-meta">
+                                <span>2023-10-05</span>
+                                <a href="#" class="read-more">阅读全文 →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Story 6 -->
+                    <article class="story-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/leaving6/400/300.jpg" alt="咖啡店">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">城市/生活</span>
+                            <h3 class="card-title">从北京回老家，是一场漫长的告别</h3>
+                            <p class="card-excerpt">离开北上广不是失败，而是选择。我们在此刻就此别过，为了寻找另一种可能的生活。</p>
+                            <div class="card-meta">
+                                <span>2023-10-01</span>
+                                <a href="#" class="read-more">阅读全文 →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section class="guide-section">
+            <div class="container guide-container">
+                <div class="guide-list">
+                    <div class="guide-item">
+                        <div class="guide-icon">✦</div>
+                        <div class="guide-text">
+                            <h3>如何体面地结束一段关系</h3>
+                            <p>无论是爱情、友情还是职场合作，正确的告别方式能最大程度减少对彼此的伤害，保留美好的回忆。</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">✎</div>
+                        <div class="guide-text">
+                            <h3>写给自己的告别信</h3>
+                            <p>通过书写来整理思绪，将压抑的情绪释放出来。这是疗愈过去、迈向未来的第一步。</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">❤</div>
+                        <div class="guide-text">
+                            <h3>告别后的自我重建</h3>
+                            <p>失去并不意味着失去一切。学会独处，建立新的爱好，你会发现“就此别过”之后，生活依然精彩。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="guide-image">
+                    <img src="https://picsum.photos/seed/guide/600/500.jpg" alt="治愈系插画，两个人在夕阳下挥手告别" width="600" height="500">
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <div class="container quote-box">
+                <p class="quote-text">“人生就是一列开往坟墓的列车，路途上会有很多站，很难有人可以自始至终陪着走完。当陪你的人要下车时，即使不舍也该心存感激，然后挥手道别。”</p>
+                <p class="quote-author">—— 《千与千寻》</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常见问题</h2>
+                    <p>关于情感处理与故事分享的疑问解答</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">在这里分享故事会影响我的心情吗？</div>
+                    <div class="faq-answer">这是一个安全、匿名的环境。我们鼓励真实的表达，但同时也提供了心理疏导资源。如果感到不适，请随时联系我们的心理支持栏目。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">我可以选择不公开我的故事吗？</div>
+                    <div class="faq-answer">当然可以。在投稿时，你可以选择“仅作者可见”或“私密分享”模式，只有授权的人才能阅读你的故事。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">如何判断一段关系是否真的结束了？</div>
+                    <div class="faq-answer">真正的结束往往不是激烈的争吵，而是沉默、失望的累积，以及双方都开始习惯没有对方的生活。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">这里支持哪些类型的离别故事？</div>
+                    <div class="faq-answer">我们接受所有形式的“就此别过”：分手、离婚、搬家、离职、失去亲人、朋友渐行渐远等。只要它是关于成长和思考的，我们都愿意倾听。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>就此别过</h4>
+                    <p style="color: #bdc3c7; font-size: 0.9rem; line-height: 1.6;">
+                        致力于为每一个正在经历告别的人提供一个温暖的栖息地。在这里，每一次离别都是为了更好的相遇。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>栏目导航</h4>
+                    <ul>
+                        <li><a href="#">情感故事</a></li>
+                        <li><a href="#">人生感悟</a></li>
+                        <li><a href="#">心理疏导</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">联系合作</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">微博账号</a></li>
+                        <li><a href="#">小红书</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 就此别过情感社区 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
