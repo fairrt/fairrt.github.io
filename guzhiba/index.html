@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股指吧-全球股指市场分析与交易策略交流社区</title>
+    <meta name="description" content="股指吧专注于全球主要股指期货、现货及衍生品的市场分析。提供实时行情解读、技术指标应用、交易策略分享及新手入门指南，是投资者学习与交流的专业平台。">
+    <meta name="keywords" content="股指吧,股指期货,标普500,纳指期货,恒生指数,股指分析,交易策略">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #004494;
+            --accent-color: #ff9800;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --bg-body: #f4f6f9;
+            --bg-card: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .section-more {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0, 86, 179, 0.05);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 4px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        /* Market Indices Grid */
+        .indices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: -32px;
+            margin-bottom: 40px;
+        }
+
+        .index-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .index-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .index-name {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .index-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .index-change {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .index-change.up { color: #e74c3c; }
+        .index-change.down { color: #27ae60; }
+
+        /* Main Content Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Content Area */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .news-item {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            display: flex;
+            gap: 20px;
+        }
+
+        .news-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 60px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 8px 0;
+        }
+
+        .news-date .day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .news-date .month {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .news-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .news-content h3 a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .news-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hot-list li {
+            margin-bottom: 12px;
+        }
+
+        .hot-list a {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .hot-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .hot-list .rank {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #eee;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .hot-list .rank.top-1 { background-color: #ff9800; color: white; }
+        .hot-list .rank.top-2 { background-color: #f44336; color: white; }
+        .hot-list .rank.top-3 { background-color: #ff5722; color: white; }
+
+        .guide-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .guide-item {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .guide-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .guide-item h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .guide-item p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Strategy Section */
+        .strategy-section {
+            background-color: white;
+            padding: 48px 0;
+            margin-bottom: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .strategy-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .strategy-img {
+            width: 100%;
+            height: 180px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .strategy-content {
+            padding: 20px;
+        }
+
+        .strategy-tag {
+            display: inline-block;
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .strategy-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .strategy-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            margin-bottom: 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 48px 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 0;
+            }
+            
+            nav ul {
+                margin: 12px 0;
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .news-item {
+                flex-direction: column;
+            }
+
+            .news-date {
+                flex-direction: row;
+                gap: 8px;
+                padding: 0;
+                background: none;
+            }
+            
+            .news-date .day {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color);">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                </svg>
+                股指吧
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">市场分析</a></li>
+                    <li><a href="#">策略交流</a></li>
+                    <li><a href="#">新手指南</a></li>
+                    <li><a href="#">数据工具</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>洞察全球股指动态</h1>
+            <p>汇聚专业分析师观点，提供实时行情解读与交易策略分享，助您在股指市场中稳健前行。</p>
+            <div class="search-box">
+                <input type="text" placeholder="搜索股票代码、指数名称或策略...">
+                <button class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Market Indices Preview -->
+        <div class="indices-grid">
+            <div class="index-card">
+                <div class="index-name">标普500</div>
+                <div class="index-value">4,567.89</div>
+                <div class="index-change up">+1.23%</div>
+            </div>
+            <div class="index-card">
+                <div class="index-name">纳斯达克</div>
+                <div class="index-value">14,234.56</div>
+                <div class="index-change down">-0.45%</div>
+            </div>
+            <div class="index-card">
+                <div class="index-name">道琼斯</div>
+                <div class="index-value">35,678.90</div>
+                <div class="index-change up">+0.88%</div>
+            </div>
+            <div class="index-card">
+                <div class="index-name">恒生指数</div>
+                <div class="index-value">18,456.12</div>
+                <div class="index-change down">-1.12%</div>
+            </div>
+            <div class="index-card">
+                <div class="index-name">富时A50</div>
+                <div class="index-value">13,567.89</div>
+                <div class="index-change up">+0.56%</div>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Main Content: News & Analysis -->
+            <main>
+                <div class="section-header">
+                    <h2 class="section-title">最新市场动态</h2>
+                    <a href="#" class="section-more">查看全部 &rarr;</a>
+                </div>
+                
+                <div class="news-list">
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">15</span>
+                            <span class="month">10月</span>
+                        </div>
+                        <div class="news-content">
+                            <h3><a href="#">美联储最新议息会议纪要解读：利率维持高位对全球股指的影响</a></h3>
+                            <p class="news-excerpt">美联储在最新的会议上维持基准利率不变，但暗示未来可能放缓加息步伐。分析师认为，这一信号对于科技股和成长型股指构成利好，但需警惕通胀数据反弹的风险。</p>
+                            <div class="news-meta">来源：全球财经观察 | 阅读量：3,420</div>
+                        </div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">14</span>
+                            <span class="month">10月</span>
+                        </div>
+                        <div class="news-content">
+                            <h3><a href="#">A股三大指数集体收涨，新能源板块领涨</a></h3>
+                            <p class="news-excerpt">受政策利好刺激，今日A股市场情绪回暖，沪深两市成交额显著放大。上证指数重回3000点上方，创业板指表现尤为强劲，新能源与生物医药板块资金流入明显。</p>
+                            <div class="news-meta">来源：股市早报 | 阅读量：5,128</div>
+                        </div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">14</span>
+                            <span class="month">10月</span>
+                        </div>
+                        <div class="news-content">
+                            <h3><a href="#">原油价格震荡上行，能源类ETF表现活跃</a></h3>
+                            <p class="news-excerpt">地缘政治局势紧张推高了原油期货价格，受此影响，全球能源类股指表现强势。投资者需关注OPEC+的产量政策变化，这对能源板块的长期走势至关重要。</p>
+                            <div class="news-meta">来源：大宗商品周刊 | 阅读量：2,890</div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside>
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">热门话题</h3>
+                    <ul class="hot-list">
+                        <li><a href="#"><span class="rank top-1">1</span>2023年股指期货交易手续费标准调整</a></li>
+                        <li><a href="#"><span class="rank top-2">2</span>如何利用布林带指标判断股指趋势</a></li>
+                        <li><a href="#"><span class="rank top-3">3</span>美股科技股回调，纳指100ETF还能买吗？</a></li>
+                        <li><a href="#"><span class="rank">4</span>恒指夜期走势分析与操作建议</a></li>
+                        <li><a href="#"><span class="rank">5</span>散户如何避免股指交易中的追涨杀跌</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">新手入门</h3>
+                    <div class="guide-list">
+                        <div class="guide-item">
+                            <h4>什么是股指期货？</h4>
+                            <p>基础知识科普</p>
+                        </div>
+                        <div class="guide-item">
+                            <h4>股指交易风险</h4>
+                            <p>杠杆与爆仓机制</p>
+                        </div>
+                        <div class="guide-item">
+                            <h4>模拟交易</h4>
+                            <p>零成本试水</p>
+                        </div>
+                        <div class="guide-item">
+                            <h4>交易时间表</h4>
+                            <p>全球市场开盘时间</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Strategy Section -->
+        <section class="strategy-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">精选交易策略</h2>
+                    <a href="#" class="section-more">策略库 &rarr;</a>
+                </div>
+                <div class="strategy-grid">
+                    <article class="strategy-card">
+                        <img src="https://picsum.photos/seed/finance1/400/250" alt="技术分析" class="strategy-img">
+                        <div class="strategy-content">
+                            <span class="strategy-tag">趋势跟踪</span>
+                            <h3><a href="#">MACD金叉与股指趋势共振策略</a></h3>
+                            <p>通过MACD指标的底背离与金叉信号，结合均线系统，寻找股指中长线做多机会。</p>
+                            <a href="#" class="section-more" style="font-size:0.9rem;">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="strategy-card">
+                        <img src="https://picsum.photos/seed/finance2/400/250" alt="风险管理" class="strategy-img">
+                        <div class="strategy-content">
+                            <span class="strategy-tag">风控</span>
+                            <h3><a href="#">股指交易中的仓位管理艺术</a></h3>
+                            <p>分享金字塔式加仓法与凯利公式在股指交易中的应用，有效控制回撤风险。</p>
+                            <a href="#" class="section-more" style="font-size:0.9rem;">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="strategy-card">
+                        <img src="https://picsum.photos/seed/finance3/400/250" alt="宏观分析" class="strategy-img">
+                        <div class="strategy-content">
+                            <span class="strategy-tag">宏观</span>
+                            <h3><a href="#">非农数据公布前的股指波动规律</a></h3>
+                            <p>解析非农就业数据对美元指数及美股股指的影响，提供数据公布前的交易预案。</p>
+                            <a href="#" class="section-more" style="font-size:0.9rem;">阅读全文</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">常见问题解答</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">股指期货和股票有什么区别？</div>
+                <div class="faq-answer">
+                    股指期货是约定在未来某个时间以特定价格买入或卖出指数的合约，具有杠杆效应；而股票代表对上市公司的所有权，通常没有杠杆。股指期货主要用于套期保值和投机。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">新手适合交易哪些股指品种？</div>
+                <div class="faq-answer">
+                    新手建议从波动相对较小、流动性好的品种入手，如沪深300股指期货（IF）或标普500指数ETF。同时，建议先进行充分的模拟盘练习，熟悉交易规则。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">影响股指短期波动的主要因素有哪些？</div>
+                <div class="faq-answer">
+                    主要包括宏观经济数据（如CPI、PMI）、央行货币政策、地缘政治事件、重大公司财报以及市场情绪等。这些因素会直接影响投资者的风险偏好。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">在股指吧社区可以获取哪些帮助？</div>
+                <div class="faq-answer">
+                    股指吧汇聚了大量资深交易员和分析师，您可以在这里查看实时行情解读、学习技术分析方法、分享交易心得，并参与关于市场热点的讨论。
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color:white; margin-bottom:16px;">
+                        股指吧
+                    </div>
+                    <p style="color:#bdc3c7; font-size:0.9rem; line-height:1.6;">
+                        专注提供全球股指市场深度分析、交易策略分享与投资者教育服务。我们致力于打造最专业的金融交流社区。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>市场资讯</h4>
+                    <ul>
+                        <li><a href="#">美股动态</a></li>
+                        <li><a href="#">A股市场</a></li>
+                        <li><a href="#">港股行情</a></li>
+                        <li><a href="#">期货数据</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>交易服务</h4>
+                    <ul>
+                        <li><a href="#">模拟交易</a></li>
+                        <li><a href="#">策略回测</a></li>
+                        <li><a href="#">交易软件</a></li>
+                        <li><a href="#">API接口</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">网站简介</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 股指吧 版权所有 | 交易有风险，投资需谨慎</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
