@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="beautyleg图 - 聚焦美腿美学、健康生活方式与时尚穿搭的视觉指南。提供高清美腿摄影作品鉴赏、腿部线条塑形建议及日常护理技巧。">
+    <meta name="keywords" content="beautyleg图, 美腿摄影, 腿部线条, 美学, 时尚穿搭, 健康生活">
+    <title>beautyleg图 - 美腿美学鉴赏与腿部线条管理指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d63384;
+            --secondary-color: #f8f9fa;
+            --text-dark: #212529;
+            --text-gray: #6c757d;
+            --border-color: #dee2e6;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #fff0f5 0%, #fff 100%);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 20px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 14px;
+            color: var(--text-gray);
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 40px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-image {
+            height: 320px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Feature Section */
+        .feature-section {
+            padding: 60px 0;
+            background: var(--secondary-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(214, 51, 132, 0.1);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 15px;
+        }
+
+        /* Guide List */
+        .guide-list {
+            padding: 40px 0;
+        }
+
+        .guide-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+        }
+
+        .guide-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: rgba(214, 51, 132, 0.2);
+            line-height: 1;
+        }
+
+        .guide-content h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .guide-content p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .card-image {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">beautyleg图<span>美学馆</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">精选图集</a></li>
+                    <li><a href="#">健康指南</a></li>
+                    <li><a href="#">穿搭灵感</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+            <button class="search-btn" aria-label="搜索">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>探索美腿美学与线条艺术</h1>
+                <p>汇聚全球优质美腿摄影作品，提供专业的腿部线条管理与健康生活方式建议，发现身体之美。</p>
+                <div class="tags">
+                    <a href="#" class="tag">高清摄影</a>
+                    <a href="#" class="tag">健康塑形</a>
+                    <a href="#" class="tag">时尚穿搭</a>
+                    <a href="#" class="tag">运动健身</a>
+                    <a href="#" class="tag">腿部护理</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">精选美腿图集</h2>
+                    <a href="#" style="color: var(--primary-color); font-weight: 500;">查看全部 &rarr;</a>
+                </div>
+                
+                <div class="gallery-grid">
+                    <article class="card">
+                        <div class="card-image">
+                            <!-- Using picsum with specific seeds for consistency -->
+                            <img src="https://picsum.photos/seed/beautyleg1/400/500" alt="优雅姿态下的腿部线条展示">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">优雅姿态下的腿部线条展示</h3>
+                            <div class="card-meta">
+                                <span>摄影作品</span>
+                                <span>1.2k 浏览</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/beautyleg2/400/500" alt="运动后的紧致线条">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">运动后的紧致线条</h3>
+                            <div class="card-meta">
+                                <span>健身指导</span>
+                                <span>890 浏览</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/beautyleg3/400/500" alt="夏日清凉穿搭与腿部搭配">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">夏日清凉穿搭与腿部搭配</h3>
+                            <div class="card-meta">
+                                <span>时尚穿搭</span>
+                                <span>2.1k 浏览</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/beautyleg4/400/500" alt="自然光下的腿部特写">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">自然光下的腿部特写</h3>
+                            <div class="card-meta">
+                                <span>摄影技巧</span>
+                                <span>3.4k 浏览</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">美学与健康的结合</h2>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <h3>健康生活方式</h3>
+                        <p>关注腿部健康，通过科学的运动和饮食，塑造紧致、健康的腿部线条，而非单纯追求视觉美感。</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3>摄影美学鉴赏</h3>
+                        <p>学习如何通过光影、构图和色彩，捕捉腿部线条的动态美与静态美，提升审美品味。</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        </div>
+                        <h3>科学塑形建议</h3>
+                        <p>提供针对性的腿部肌肉训练计划，包括拉伸、有氧和力量训练，帮助改善腿部形态。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-list">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题解答</h2>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-number">01</div>
+                    <div class="guide-content">
+                        <h3>什么样的腿部线条才算健康？</h3>
+                        <p>健康的腿部线条通常指肌肉分布均匀，没有明显的脂肪堆积，皮肤状态良好，且具备良好的柔韧性。过度的肌肉隆起或过度的消瘦都不一定是健康的标志。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-number">02</div>
+                    <div class="guide-content">
+                        <h3>如何通过日常锻炼改善腿部形态？</h3>
+                        <p>建议结合深蹲、箭步蹲等力量训练来增强大腿肌肉，配合高抬腿、跑步等有氧运动来减少腿部脂肪。同时，睡前进行腿部拉伸能有效缓解水肿，改善线条。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-number">03</div>
+                    <div class="guide-content">
+                        <h3>beautyleg图风格主要关注什么？</h3>
+                        <p>beautyleg图风格主要关注腿部线条的视觉效果，包括脚踝、膝盖、大腿和小腿的几何美感。这类内容通常强调光影效果、服装搭配以及模特的姿态。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p style="color: #999; font-size: 14px; line-height: 1.8;">
+                        beautyleg图美学馆致力于分享美腿摄影艺术与腿部健康管理知识，倡导健康、自信的生活方式。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">热门图集</a></li>
+                        <li><a href="#">健身教程</a></li>
+                        <li><a href="#">时尚资讯</a></li>
+                        <li><a href="#">版权声明</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="#">投稿合作</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 beautyleg图美学馆 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
