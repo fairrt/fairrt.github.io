@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="冰冷热带鱼下载官方资源站提供冰蓝、蓝眼等冷门热带鱼品种的饲养指南、繁殖技巧及高清观赏图库，解决养鱼新手对冷色系热带鱼的疑惑。">
+    <meta name="keywords" content="冰冷热带鱼下载,冷门热带鱼,冰蓝斗鱼,热带鱼饲养,冷色调观赏鱼">
+    <title>冰冷热带鱼下载-冷门热带鱼品种鉴赏与饲养指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #94d2bd;
+            --bg-color: #f0f8ff;
+            --card-bg: #ffffff;
+            --text-main: #2b2d42;
+            --text-light: #8d99ae;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://picsum.photos/seed/fishtank/1600/600') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 95, 115, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Main Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                height: 300px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e1e8ed;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sidebar Styles */
+        aside {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+
+        .sidebar-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+
+        .sidebar-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-list a {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sidebar-list span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Download Section */
+        .download-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px dashed var(--secondary-color);
+        }
+
+        .download-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .file-info {
+            margin: 1.5rem 0;
+            text-align: left;
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .file-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem;
+            background: var(--bg-color);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-main);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <a href="#" class="logo">❄️ <span>冰冷热带鱼</span>下载</a>
+        <nav>
+            <ul>
+                <li><a href="#species">冷门品种</a></li>
+                <li><a href="#care">饲养指南</a></li>
+                <li><a href="#download">资源下载</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>探索水族界的极寒美学</h1>
+            <p>专为水族爱好者打造的冰冷热带鱼品种图鉴与饲养资料库。下载高清观赏图、繁殖手册及环境布置指南。</p>
+            <a href="#download" class="btn">立即获取资料包</a>
+        </div>
+    </section>
+
+    <div class="main-grid">
+        <!-- Main Content -->
+        <div class="content-area">
+            <!-- Featured Species -->
+            <section id="species">
+                <h2 class="section-title">精选冷门品种</h2>
+                <div class="card-grid">
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/bluefish1/400/300" alt="冰蓝斗鱼" class="card-img">
+                        <div class="card-body">
+                            <span class="tag">斗鱼科</span>
+                            <h3 class="card-title">冰蓝斗鱼</h3>
+                            <p class="card-desc">拥有独特蓝绿色泽的变异斗鱼，性情温和，适合新手尝试。需注意水温控制与隔离饲养。</p>
+                            <a href="#" style="color: var(--secondary-color); font-weight:600; font-size:0.9rem;">查看详情 &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/snowfish/400/300" alt="白化月光鱼" class="card-img">
+                        <div class="card-body">
+                            <span class="tag">鲤科</span>
+                            <h3 class="card-title">白化月光鱼</h3>
+                            <p class="card-desc">通体雪白或半透明，如同冰晶般剔透。对水质要求不高，是营造“冰系”水景的绝佳选择。</p>
+                            <a href="#" style="color: var(--secondary-color); font-weight:600; font-size:0.9rem;">查看详情 &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/ghostfish/400/300" alt="幽灵虾" class="card-img">
+                        <div class="card-body">
+                            <span class="tag">淡水虾</span>
+                            <h3 class="card-title">极地幽灵虾</h3>
+                            <p class="card-desc">半透明身体，在光线折射下极具观赏性。常作为观赏鱼缸的“清洁工”和景观点缀。</p>
+                            <a href="#" style="color: var(--secondary-color); font-weight:600; font-size:0.9rem;">查看详情 &rarr;</a>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/frostfish/400/300" alt="蓝曼龙" class="card-img">
+                        <div class="card-body">
+                            <span class="tag">攀鲈科</span>
+                            <h3 class="card-title">蓝曼龙</h3>
+                            <p class="card-desc">体表呈现深蓝色金属光泽，生命力顽强，耐低温能力较强，适合混养。</p>
+                            <a href="#" style="color: var(--secondary-color); font-weight:600; font-size:0.9rem;">查看详情 &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Care Guide -->
+            <section id="care">
+                <h2 class="section-title">饲养环境与技巧</h2>
+                <article style="background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">1. 水温控制</h3>
+                    <p style="color: var(--text-light);">与普通热带鱼不同，冰冷热带鱼（如部分变异体或耐寒品种）对水温的敏感度较低，通常在22℃-26℃之间即可健康生长。过高的水温可能导致褪色，过低则影响食欲。</p>
+                </article>
+                <article style="background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">2. 光线布置</h3>
+                    <p style="color: var(--text-light);">为了突显“冰冷”的视觉效果，建议使用冷白光LED灯管，避免强烈的暖色光直射。深色背景板能增强鱼体色泽的对比度。</p>
+                </article>
+                <article style="background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">3. 过滤与净化</h3>
+                    <p style="color: var(--text-light);">这类鱼类通常喜欢安静的水质环境。建议使用带有过滤棉和活性炭的静音过滤器，保持水体清澈。</p>
+                </article>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="download-section" id="download">
+                <span class="download-icon">📥</span>
+                <h3>资料包下载</h3>
+                <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">包含高清图库与饲养电子书</p>
+                
+                <div class="file-info">
+                    <div class="file-row">
+                        <span>文件名：</span>
+                        <span>Ice_Fish_Guide_v1.2.zip</span>
+                    </div>
+                    <div class="file-row">
+                        <span>大小：</span>
+                        <span>128 MB</span>
+                    </div>
+                    <div class="file-row">
+                        <span>格式：</span>
+                        <span>JPG + PDF</span>
+                    </div>
+                    <div class="file-row">
+                        <span>更新：</span>
+                        <span>2023-10</span>
+                    </div>
+                </div>
+
+                <a href="#" class="btn" style="width: 100%;">点击下载</a>
+                <p style="font-size: 0.75rem; color: #999; margin-top: 10px;">请遵守版权协议，仅供个人学习使用</p>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1rem; border-left: 4px solid var(--secondary-color); padding-left: 0.5rem;">热门分类</h3>
+                <ul class="sidebar-list">
+                    <li><a href="#">冷色调斗鱼 <span>12</span></a></li>
+                    <li><a href="#">蓝绿色热带鱼 <span>8</span></a></li>
+                    <li><a href="#">白化观赏虾 <span>5</span></a></li>
+                    <li><a href="#">冷系水草造景 <span>20</span></a></li>
+                    <li><a href="#">低能耗鱼缸设备 <span>3</span></a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <h2 class="section-title">饲养常见问题 (FAQ)</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">什么是“冰冷热带鱼”？</div>
+            <div class="faq-answer">
+                这并非一个严格的生物学分类，而是指那些体色偏蓝、白、青，或者属于耐寒变异品种的热带鱼。这类鱼类在水族圈中因其独特的冷色调美学而受到喜爱。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">下载的资料包含哪些内容？</div>
+            <div class="faq-answer">
+                本次“冰冷热带鱼下载”资源包包含了50张高清品种鉴赏图、3份PDF饲养手册（涵盖繁殖与水质管理）以及一份水草造景参考方案。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">新手适合养哪种冰冷热带鱼？</div>
+            <div class="faq-answer">
+                首选白化月光鱼或蓝曼龙。它们对环境适应力强，且“冷色系”外观非常出片，容易建立信心。
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于本站</h4>
+                <p style="font-size: 0.9rem; color: #ccc; line-height: 1.6;">
+                    专注于冷门与变异热带鱼资源的分享与推广，致力于为水族爱好者提供专业、纯净的观赏鱼信息。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>资源分类</h4>
+                <ul>
+                    <li><a href="#">品种图鉴</a></li>
+                    <li><a href="#">饲养视频</a></li>
+                    <li><a href="#">电子书下载</a></li>
+                    <li><a href="#">硬件推荐</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">合作洽谈</a></li>
+                    <li><a href="#">反馈建议</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 冰冷热带鱼下载站 版权所有 | 仅供学习交流使用
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Simple FAQ accordion logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    });
+</script>
+
+</body>
+                                          </html>
