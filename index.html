@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="萌导航 - 专注发现优质二次元资源与社区。提供漫画、动画、游戏、Cosplay及同人创作网站的精选导航与分类推荐，助您快速找到心仪的二次元世界入口。">
+    <meta name="keywords" content="萌导航,二次元导航,动漫资源,漫画推荐,Cosplay网站,同人创作社区">
+    <title>萌导航-二次元资源精选与社区导航平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff7eb3;
+            --secondary-color: #ff758c;
+            --accent-color: #8fd3f4;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .search-box {
+            position: relative;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .search-box {
+                display: block;
+            }
+        }
+
+        .search-box input {
+            padding: 8px 16px 8px 36px;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            outline: none;
+            width: 200px;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            width: 240px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 6px 16px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 126, 179, 0.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .section-title h2 {
+            font-size: 20px;
+            color: var(--text-main);
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 18px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-2 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 126, 179, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-info h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .card-info p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            box-shadow: 0 4px 12px rgba(255, 117, 140, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #eee;
+            color: var(--text-secondary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-main);
+        }
+
+        .visit-count {
+            font-size: 11px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Special Section: Banner */
+        .banner-section {
+            margin: 50px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .banner-section {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .banner-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .banner-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .banner-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .banner-card p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .banner-card .btn {
+            width: fit-content;
+            background: white;
+            color: var(--secondary-color);
+        }
+
+        .banner-card .btn:hover {
+            background: #f8f8f8;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            margin-top: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--secondary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            background: #fff;
+            padding: 40px 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <span>萌导航</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">漫画推荐</a>
+                <a href="#">动画资讯</a>
+                <a href="#">游戏社区</a>
+                <a href="#">Cosplay</a>
+                <a href="#">关于我们</a>
+            </nav>
+            <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="搜索网站、作品或标签...">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>发现你的二次元新世界</h1>
+                <p>汇集全网优质动漫、漫画、游戏及同人创作资源，为二次元爱好者提供最纯净、最及时的导航服务。</p>
+                <div class="tags-cloud">
+                    <span class="tag">日漫</span>
+                    <span class="tag">国漫</span>
+                    <span class="tag">轻小说</span>
+                    <span class="tag">同人志</span>
+                    <span class="tag">Galgame</span>
+                    <span class="tag">手办周边</span>
+                    <span class="tag">漫展信息</span>
+                    <span class="tag">配音圈</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Main Content Grid -->
+            <div class="grid-2">
+                <!-- Category: Popular Sites -->
+                <div class="section-title">
+                    <h2>热门推荐</h2>
+                    <a href="#" class="view-all">查看更多 &rarr;</a>
+                </div>
+
+                <div class="grid-2" style="grid-template-columns: 1fr; gap: 20px;">
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-icon">📚</div>
+                            <div class="card-info">
+                                <h3>动漫之家</h3>
+                                <p>正版日漫搬运工</p>
+                            </div>
+                        </div>
+                        <p class="card-desc">国内访问速度极快的正版日漫观看平台，拥有海量高清正版漫画资源，更新及时，画质优良。</p>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">立即访问</a>
+                            <span class="visit-count">🔥 12.5w 访问</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🎮</div>
+                            <div class="card-info">
+                                <h3>萌娘百科</h3>
+                                <p>ACG属性大辞典</p>
+                            </div>
+                        </div>
+                        <p class="card-desc">基于MediaWiki架构的维基百科项目，收录大量ACG相关人物、作品、术语及同人创作资料。</p>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">前往百科</a>
+                            <span class="visit-count">✨ 8.2w 访问</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🎨</div>
+                            <div class="card-info">
+                                <h3>Lofter</h3>
+                                <p>兴趣者的聚集地</p>
+                            </div>
+                        </div>
+                        <p class="card-desc">以兴趣聚合的原创内容社区，涵盖漫画、图包、同人文、摄影等多种二次元创作形式。</p>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">浏览内容</a>
+                            <span class="visit-count">❤️ 5.1w 访问</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <div class="card-icon">📺</div>
+                            <div class="card-info">
+                                <h3>Bilibili</h3>
+                                <p>弹幕视频网站</p>
+                            </div>
+                        </div>
+                        <p class="card-desc">国内知名的视频弹幕网站，拥有大量官方正版动画、独家番剧及用户上传的MAD/AMV作品。</p>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">观看视频</a>
+                            <span class="visit-count">💬 45w 访问</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Banner Section -->
+            <div class="banner-section">
+                <div class="banner-card">
+                    <h3>加入我们的同人创作计划</h3>
+                    <p>如果你是优秀的画师、作家或剪辑师，欢迎在这里展示你的作品，与百万二次元爱好者互动。</p>
+                    <a href="#" class="btn">提交作品</a>
+                </div>
+                <div class="card" style="justify-content: center; align-items: center; text-align: center; background: #fff0f5;">
+                    <div style="font-size: 40px; margin-bottom: 10px;">🎁</div>
+                    <h3 style="margin-bottom: 10px;">每日签到</h3>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 15px;">每日登录即可获得积分，兑换精美周边。</p>
+                    <a href="#" class="btn btn-outline">开始签到</a>
+                </div>
+            </div>
+
+            <!-- Category: New Updates -->
+            <div class="section-title">
+                <h2>最新收录</h2>
+                <a href="#" class="view-all">查看更多 &rarr;</a>
+            </div>
+
+            <div class="grid-2">
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon">✨</div>
+                        <div class="card-info">
+                            <h3>ACG资源网</h3>
+                            <p>资源下载与分享</p>
+                        </div>
+                    </div>
+                    <p class="card-desc">专注于提供高质量的游戏资源、软件工具及高清壁纸下载，界面简洁无广告干扰。</p>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">下载资源</a>
+                        <span class="visit-count">⬇ 3.4w 下载</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎭</div>
+                        <div class="card-info">
+                            <h3>模型库 (ModelHub)</h3>
+                            <p>3D与二次元模型</p>
+                        </div>
+                    </div>
+                    <p class="card-desc">为3D爱好者和创作者提供丰富的二次元角色模型、场景贴图及材质资源。</p>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">浏览模型</a>
+                        <span class="visit-count">📦 1.8w 下载</span>
+                    </div>
+                </article>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <div class="section-title">
+                    <h2>常见问题</h2>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">萌导航收录的网站都是正版的吗？</div>
+                    <div class="faq-answer">萌导航致力于推荐正版资源，但也收录部分符合版权保护原则的优质同人及衍生内容社区。请各位用户遵守当地法律法规，支持正版。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何向萌导航提交新网站？</div>
+                    <div class="faq-answer">您可以通过底部的“联系我们”页面，填写网站信息并附上ICP备案号，经审核通过后将有机会被收录。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">导航页面的数据是实时更新的吗？</div>
+                    <div class="faq-answer">我们定期对收录网站进行存活检测和流量评估，确保链接的有效性，并在发现失效链接时及时处理。</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">关于萌导航</a>
+            <a href="#">免责声明</a>
+            <a href="#">提交收录</a>
+            <a href="#">隐私政策</a>
+            <a href="#">友情链接</a>
+        </div>
+        <p class="copyright">Copyright © 2023 萌导航. All Rights Reserved. 本站仅做资源索引，不存储任何视频或文件。</p>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 折叠交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 搜索框简单的视觉反馈
+            const searchInput = document.querySelector('.search-box input');
+            searchInput.addEventListener('focus', () => {
+                searchInput.placeholder = '输入关键词搜索...';
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.placeholder = '搜索网站、作品或标签...';
+            });
+        });
+    </script>
+</body>
+  </html>
